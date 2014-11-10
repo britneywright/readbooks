@@ -1,4 +1,4 @@
-<% form_for @book do |f| %>
+<%= form_for(@book) do |f| %>
   <div class="field">
    <%= f.label :title %>
    <%= f.text_field :title %>
@@ -14,5 +14,8 @@
   <div class="field">
    <%= f.label :cover_image %>
    <%= f.file_field :cover_image %>
+  </div>  
+  <div class="actions">
+    <%= f.submit %>
   </div>    
 <% end %>

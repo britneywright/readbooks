@@ -5,6 +5,5 @@ FactoryGirl.define do
     title "Effective Ruby"
     copies "2"
     year "2014"
-    cover_image "http://example.jpg"
   end
 end

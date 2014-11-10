@@ -4,7 +4,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :title
       t.string :copies
       t.string :year
-      t.string :cover_image
+      t.attachment :cover_image
       t.timestamps
     end
   end
