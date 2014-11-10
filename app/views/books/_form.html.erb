@@ -1,0 +1,18 @@
+<% form_for @book do |f| %>
+  <div class="field">
+   <%= f.label :title %>
+   <%= f.text_field :title %>
+  </div>
+  <div class="field">
+   <%= f.label :year %>
+   <%= f.text_field :year %>
+  </div>
+  <div class="field">
+   <%= f.label :copies %>
+   <%= f.text_field :copies %>
+  </div>
+  <div class="field">
+   <%= f.label :cover_image %>
+   <%= f.file_field :cover_image %>
+  </div>    
+<% end %>
