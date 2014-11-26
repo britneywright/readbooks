@@ -10,10 +10,6 @@ describe Book do
     expect(build(:book)).to be_valid
   end
 
-  it "has a valid number of copies" do
-    expect(build(:book)).to be_valid
-  end
-
   it "has a valid year with four digits" do
     expect(build(:book)).to be_valid
   end
@@ -36,10 +32,4 @@ describe Book do
   #   book = build(:book, cover_image: "http://something.com")
   #   expect(book).to be_invalid
   # end
-
-  it "is invalid if copies isn't a number" do
-    book = build(:book, copies: "74 copoes")
-    expect(book).to be_invalid
-  end
-
 end

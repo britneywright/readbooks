@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :reserve]
 
   def index
     @books = Book.all
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
     end 
   end
 
-  def udpate
+  def update
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to @book, notice: "#{book.title} updated succesfully."}
@@ -46,6 +46,9 @@ class BooksController < ApplicationController
     format.json { head :no_content }
   end
 
+  def reserve
+  end
+
   private
 
   def set_book
@@ -53,7 +56,7 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :copies, :year, :cover_image)
+    params.require(:book).permit(:title, :copies, :year, :cover_image, :remaining_copies)
   end
 
 end
