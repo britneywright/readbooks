@@ -46,9 +46,6 @@ class BooksController < ApplicationController
     format.json { head :no_content }
   end
 
-  def reserve
-  end
-
   private
 
   def set_book
@@ -56,7 +53,7 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :copies, :year, :cover_image, :remaining_copies)
+    params.require(:book).permit(:title, :copies, :author, :link, :description, :year, :cover_image, :remaining_copies)
   end
 
 end
