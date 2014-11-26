@@ -8,6 +8,6 @@ describe Copy do
 
   it "belongs to a book" do
     something = create(:book)
-    expect(build(:copy).book).to be something
+    expect(build(:copy, book: something).book).to be something
   end
 end
