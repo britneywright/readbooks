@@ -1,11 +1,10 @@
 <div class="bookDetails">
   <h2><%= @book.title %></h2>
   <p>Year published: <%= @book.year %></p>
-  <p>Copies: <%= @book.copies %><p>
-  <p>Copies Remaining: <%= @book.remaining_copies %><p>
-  <p><%= link_to "Reserve", reserve_path(@book) %></p>
 </div>
+<% if @book.cover_image? %>
 <div class="bookCover">
   <%= image_tag @book.cover_image.url %>
 </div>
+<% end %>
 <%= link_to "Remove", @book, method: :delete, data: { confirm: "Are you sure?" } %>

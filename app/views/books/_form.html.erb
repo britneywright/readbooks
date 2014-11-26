@@ -8,9 +8,17 @@
    <%= f.text_field :year %>
   </div>
   <div class="field">
-   <%= f.label :copies %>
-   <%= f.text_field :copies %>
+   <%= f.label :author %>
+   <%= f.text_field :author %>
   </div>
+  <div class="field">
+   <%= f.label :link %>
+   <%= f.text_field :link %>
+  </div> 
+  <div class="field">
+   <%= f.label :description %>
+   <%= f.text_area :description %>
+  </div>   
   <div class="field">
    <%= f.label :cover_image %>
    <%= f.file_field :cover_image %>
