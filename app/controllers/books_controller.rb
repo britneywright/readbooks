@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy, :reserve]
+  before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
     @books = Book.all
@@ -42,8 +42,10 @@ class BooksController < ApplicationController
 
   def destroy
     @food.destroy
-    format.html { redirect_to books_url, notice: "Book was deleted successfully."}
-    format.json { head :no_content }
+    respond_to do |format|
+      format.html { redirect_to books_url, notice: "Book was deleted successfully."}
+      format.json { head :no_content }
+    end
   end
 
   private

@@ -6,3 +6,6 @@ class Copy < ActiveRecord::Base
 
   validates :book, presence: true
 end
+
+
+#need to write validation for: it has a unique copy_number within the scope of the other copies that belong to a specfic book
