@@ -12,11 +12,13 @@ class StatusesController < ApplicationController
   end
 
   def new
-    @status = Status.new
+    @book = Book.find(params[:book_id])
+    @status = @book.statuses.new
   end
 
   def create
-    @status = Status.new(status_params)
+    @book = Book.find(params[:book_id])
+    @status = @book.statuses.new(status_params)
     respond_to do |format|
       if @status.save
         format.html { redirect_to @status }

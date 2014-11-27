@@ -1,7 +1,7 @@
 <h2>Reservations</h2>
 <% @statuses.each do |status| %>
   <div>
-    <h3><%= status.book.title %>: Copy #<%= status.copy.copy_number %></h3>
+    <h3><%= link_to status.book.title, status %>: Copy #<%= status.copy.copy_number %></h3>
       <p>Checked out: <%= status.checked_out %></p>  
   </div>
   <hr>

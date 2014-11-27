@@ -22,8 +22,9 @@
   </div>   
 </div>
 
+<%= render 'availability' %>
+
 <div class="adminDetails">
+<%= link_to "Add a new copy", "#" %>
 <%= link_to "Remove", @book, method: :delete, data: { confirm: "Are you sure?" } %> 
 </div>
-
-<%= render 'availability' %>

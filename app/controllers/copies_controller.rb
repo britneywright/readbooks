@@ -13,7 +13,9 @@ class CopiesController < ApplicationController
   end
 
   def create
-    @copy = Copy.new(copy_params)
+    @book = Book.find(params[:book_id])
+    @copy = @book.copies.new(copy_params)
+    
     respond_to do |format|
       if @copy.save
         format.html { redirect_to @copy }

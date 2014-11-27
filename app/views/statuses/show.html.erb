@@ -12,3 +12,4 @@
     <li>Checked in: <%= @status.checked_in %></li>
   <% end %>
 </ul>
+<%= link_to 'Destroy', status_path, method: :delete, data: { confirm: 'Are you sure?' } %>

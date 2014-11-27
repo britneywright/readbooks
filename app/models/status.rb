@@ -1,5 +1,5 @@
 class Status < ActiveRecord::Base
-  belongs_to :book
+  belongs_to :book, :inverse_of => :statuses
   belongs_to :copy
 
   validates :borrower_name, :borrower_email, :borrower_phone, :copy, :book, presence: true

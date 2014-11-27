@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  has_many :statuses, :through => :copies
+  has_many :statuses, inverse_of: :book
   has_many :copies, inverse_of: :book
   validates :title, :year, :author, presence: true
   validates :year, format: { with: /\A\d{4}$\z/, message: "only allow numbers" }

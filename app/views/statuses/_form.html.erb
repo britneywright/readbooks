@@ -1,10 +1,13 @@
-<%= form_for @status do |f| %>
-
-<div class="field">
-  <%= f.label :book_id %>
-  <%= f.text_field :book_id %>
-</div>
-
+<%= form_for ([@book, @status]) do |f| %>
+<% if @status.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% @status.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+     </ul>
+  </div>
+<% end %>
 <div class="field">
   <%= f.label :copy_id %>
   <%= f.text_field :copy_id %>
