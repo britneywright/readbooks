@@ -5,7 +5,15 @@ class Copy < ActiveRecord::Base
   validates :copy_number, presence: true, numericality: true
 
   validates :book, presence: true
-end
 
+  def availability
+    self.statuses.each do |status|
+      if status.unavailable?
+        return "Checked out"
+      end
+    end
+    return "Available"
+  end  
+end
 
 #need to write validation for: it has a unique copy_number within the scope of the other copies that belong to a specfic book

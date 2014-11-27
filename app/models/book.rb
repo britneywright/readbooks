@@ -9,5 +9,12 @@ class Book < ActiveRecord::Base
   has_attached_file :cover_image
   validates_attachment_content_type :cover_image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-
+  def availability
+    self.copies.each do |copy|
+      if copy.availability == "Available"
+        return "Available"
+      end
+    end
+    return "Checked Out"
+  end  
 end

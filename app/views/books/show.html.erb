@@ -1,4 +1,6 @@
 <h2><%= @book.title %></h2>
+<%= render 'availability' %>
+
 <div class="bookInfo">
   <% if @book.cover_image? %>
     <div class="bookCover">
@@ -21,5 +23,7 @@
 </div>
 
 <div class="adminDetails">
-<%= link_to "Remove", @book, method: :delete, data: { confirm: "Are you sure?" } %>  
+<%= link_to "Remove", @book, method: :delete, data: { confirm: "Are you sure?" } %> 
 </div>
+
+<%= render 'availability' %>

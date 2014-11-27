@@ -14,6 +14,9 @@ class Status < ActiveRecord::Base
     end
   end
 
+  def unavailable?
+    checked_out? && !checked_in?
+  end
 end
 
 # validate proper email format

@@ -1,0 +1,5 @@
+<% if @book.availability == "Available" %>
+  <%= link_to "Reserve this book.", "#" %>
+<% else %>
+  Sorry, this book is not available right now.
+<% end %>
