@@ -15,3 +15,6 @@ class Status < ActiveRecord::Base
   end
 
 end
+
+# validate proper email format
+# validate proper phone number format

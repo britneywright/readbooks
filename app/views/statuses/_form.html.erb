@@ -1,0 +1,31 @@
+<%= form_for @status do |f| %>
+
+<div class="field">
+  <%= f.label :book_id %>
+  <%= f.text_field :book_id %>
+</div>
+
+<div class="field">
+  <%= f.label :copy_id %>
+  <%= f.text_field :copy_id %>
+</div>
+
+<div class="field">
+  <%= f.label :borrower_name %>
+  <%= f.text_field :borrower_name %>
+</div>
+
+<div class="field">
+  <%= f.label :borrower_email %>
+  <%= f.text_field :borrower_email %>
+</div>
+
+<div class="field">
+  <%= f.label :borrower_phone %>
+  <%= f.text_field :borrower_phone %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>

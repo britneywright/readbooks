@@ -1,10 +1,25 @@
-<div class="bookDetails">
-  <h2><%= @book.title %></h2>
-  <p>Year published: <%= @book.year %></p>
+<h2><%= @book.title %></h2>
+<div class="bookInfo">
+  <% if @book.cover_image? %>
+    <div class="bookCover">
+      <%= image_tag @book.cover_image.url %>
+    </div>
+  <% end %>
+
+  <div class="bookDetails">
+    <ul>
+      <li>Year published: <%= @book.year %></li>
+      <li>Author: <%= @book.author %></li>
+    </ul>
+    <% if @book.description? %>
+      <p><%= @book.description %></p>
+    <% end %>  
+    <% if @book.link? %>
+      <%= link_to "More info", @book.link %>
+    <% end %> 
+  </div>   
 </div>
-<% if @book.cover_image? %>
-<div class="bookCover">
-  <%= image_tag @book.cover_image.url %>
+
+<div class="adminDetails">
+<%= link_to "Remove", @book, method: :delete, data: { confirm: "Are you sure?" } %>  
 </div>
-<% end %>
-<%= link_to "Remove", @book, method: :delete, data: { confirm: "Are you sure?" } %>

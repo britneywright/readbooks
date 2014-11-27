@@ -1,0 +1,14 @@
+<h2>Reservation #<%= @status.id %></h2>
+<p><%= @status.book.title %>: Copy <%= @status.copy.copy_number %></p>
+<h3>Loan Details</h3>
+<ul>
+  <li><%= @status.borrower_name %></li>
+  <li><%= @status.borrower_phone %></li>
+  <li><%= @status.borrower_email %></li>
+  <% if @status.checked_out? %>
+    <li>Checked out: <%= @status.checked_out %></li>
+  <% end %>
+  <% if @status.checked_in? %>
+    <li>Checked in: <%= @status.checked_in %></li>
+  <% end %>
+</ul>
