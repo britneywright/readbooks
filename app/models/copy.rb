@@ -6,13 +6,13 @@ class Copy < ActiveRecord::Base
 
   validates :book, presence: true
 
-  def availability
+  def availability?
     self.statuses.each do |status|
       if status.unavailable?
-        return "Checked out"
+        return false
       end
     end
-    return "Available"
+    return true
   end  
 end
 
