@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
-  has_many :statuses, inverse_of: :book
-  has_many :copies, inverse_of: :book
+  has_many :copies, :inverse_of => :book
+  has_many :statuses, :inverse_of => :book
   validates :title, :year, :author, presence: true
   validates :year, format: { with: /\A\d{4}$\z/, message: "only allow numbers" }
 
@@ -10,11 +10,7 @@ class Book < ActiveRecord::Base
   validates_attachment_content_type :cover_image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   def available
-    self.copies.each do |copy|
-      if copy.availability?
-        return true
-      end
-    end
-    return false
-  end  
+    self.copies.where(availability: true).count > 0
+  end
+  
 end

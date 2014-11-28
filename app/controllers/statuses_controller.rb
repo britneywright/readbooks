@@ -21,6 +21,7 @@ class StatusesController < ApplicationController
     @status = @book.statuses.new(status_params)
     respond_to do |format|
       if @status.save
+        ReservationMailer.confirmation_email(@status).deliver
         format.html { redirect_to @status }
       else
         format.html { render :new }

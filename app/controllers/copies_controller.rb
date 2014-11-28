@@ -9,13 +9,14 @@ class CopiesController < ApplicationController
   end
 
   def new
-    @copy = Copy.new
+    @book = Book.find(params[:book_id])
+    @copy = @book.copies.new
   end
 
   def create
     @book = Book.find(params[:book_id])
     @copy = @book.copies.new(copy_params)
-    
+
     respond_to do |format|
       if @copy.save
         format.html { redirect_to @copy }
@@ -53,6 +54,6 @@ class CopiesController < ApplicationController
   end
 
   def copy_params
-    params.require(:copy).permit(:copy_number, :book_id)
+    params.require(:copy).permit(:copy_number, :book_id, :availability)
   end
 end

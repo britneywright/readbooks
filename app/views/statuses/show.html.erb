@@ -1,7 +1,10 @@
 <h2>Reservation #<%= @status.id %></h2>
-<p><%= @status.book.title %>: Copy <%= @status.copy.copy_number %></p>
+<p><%= @status.book.title %></p>
 <h3>Loan Details</h3>
 <ul>
+  <% if @status.copy_id %>
+    <li>Copy number: <%= @status.copy.copy_number %></li>
+  <% end %>
   <li><%= @status.borrower_name %></li>
   <li><%= @status.borrower_phone %></li>
   <li><%= @status.borrower_email %></li>
@@ -12,4 +15,6 @@
     <li>Checked in: <%= @status.checked_in %></li>
   <% end %>
 </ul>
+<%= link_to 'Edit', edit_status_path %>
+
 <%= link_to 'Destroy', status_path, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -1,12 +1,24 @@
 class Status < ActiveRecord::Base
+  belongs_to :copy, :inverse_of => :statuses
   belongs_to :book, :inverse_of => :statuses
-  belongs_to :copy
 
-  validates :borrower_name, :borrower_email, :borrower_phone, :copy, :book, presence: true
+  validates :borrower_name, :borrower_email, :borrower_phone, presence: true
 
   validates :checked_out, presence: true, if: :checked_in?
 
+  validates :copy, presence: true, if: :checked_out?
+
   validate :checked_in_after_checked_out
+
+  after_update :update_copy
+
+  def update_copy
+    if copy_id && checked_out? && !checked_in?
+      copy.update_attributes!(availability: false)
+    elsif copy_id
+      copy.update_attributes!(availability: true)
+    end      
+  end
 
   def checked_in_after_checked_out
     if checked_out? && checked_in? && checked_out > checked_in
@@ -14,10 +26,10 @@ class Status < ActiveRecord::Base
     end
   end
 
-  def unavailable?
-    checked_out? && !checked_in?
-  end
+  def confirmation_emails
+  end 
 end
 
 # validate proper email format
 # validate proper phone number format
+# can't check out a copy that's already checked out
