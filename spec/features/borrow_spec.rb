@@ -9,10 +9,10 @@ feature "Borrow" do
     go_to_website
     list_of_books
     go_to("The Little Book of Talent")
-    #view("The Little Book of Talent")
     view_details
     books_are_available
-  # they click the borrow button
+    click_borrow_button
+    reservation_page
   # they are on a form with the name of the book and an explanation of the checkout process
   # they fill in their name/email/phone
   # they click the confirm button

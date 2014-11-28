@@ -19,17 +19,24 @@ module RequestHelper
     click_link(title)
   end
 
-  def view(title)
-    expect(current_path).to eq(book_path(Book.find_by!(title: title)))
-  end
-
   def view_details
     expect(page).to have_text("The Little Book of Talent")
     expect(page).to have_text("2014")
-    save_and_open_page
   end
 
   def books_are_available
-    expect(:book).copies.available.count
+    expect(page).to have_text("Reserve this book")
+  end
+
+  def click_borrow_button
+    first(:link, "Reserve this book").click
+  end
+
+  def reservation_page
+    expect(page).to have_text("New Reservation")
+    expect(page).to have_text("Borrower name")
+    expect(page).to have_text("Borrower email")
+    expect(page).to have_text("Borrower phone")
+    expect(page).to have_button("Reserve Book")
   end
 end
