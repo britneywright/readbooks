@@ -31,4 +31,8 @@ describe Book do
   it "has a valid cover image" do
     expect(build(:book, cover_image_file_name: "soemthing.jpg")).to be_valid
   end
+
+  it "has copies" do
+    expect(create(:book).copies.count).to eq 1
+  end
 end

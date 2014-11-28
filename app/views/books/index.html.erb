@@ -2,7 +2,7 @@
 <% @books.each do |book| %>
 <ul>
   <li><%= link_to book.title, book %></li>
-  <%= book.available ? "Available" : "Not Available" %>
+  <%= book.available ? "Available" : "Not available at this time" %>
  </ul>
    <hr>
 <% end %>

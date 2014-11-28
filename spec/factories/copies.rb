@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :copy do
-    copy_number 1
+    sequence(:copy_number) {|n| n}
     book
   end
 end
