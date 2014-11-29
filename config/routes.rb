@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     resources :statuses, path: 'reservation', only: [:new, :create, :index]
   end
 
+  get 'books/:id/admin', to: 'books#admin'
+
   resources :copies, only: [:index, :edit, :update, :destroy, :show]
-  resources :statuses, path: 'reservation', only: [:index, :edit, :update, :destroy, :show]
+  resources :statuses, path: 'reservations', only: [:index, :edit, :update, :destroy, :show]
   root 'books#index'
 end

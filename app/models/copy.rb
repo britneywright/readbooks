@@ -6,8 +6,6 @@ class Copy < ActiveRecord::Base
 
   validates :book, presence: true
 
-  after_save :update_copy
-
   def copy_availability
     "#{copy_number}: #{availability}"
   end

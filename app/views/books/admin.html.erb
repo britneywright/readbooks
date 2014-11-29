@@ -2,6 +2,12 @@
 <h3><%= @book.author %>, <%= @book.year %></h3>
 <%= render 'availability' %>
 
+<div class="adminDetails">
+<%= link_to "Add a new copy", new_book_copy_path(@book, @copy) %>
+<%= link_to "Edit Book", edit_book_path(@book) %>
+<%= link_to "Remove", @book, method: :delete, data: { confirm: "Are you sure?" } %> 
+</div>
+
 <div class="bookInfo">
   <% if @book.cover_image? %>
     <div class="bookCover">
@@ -18,5 +24,3 @@
     <% end %> 
   </div>   
 </div>
-
-<%= render 'availability' %>
