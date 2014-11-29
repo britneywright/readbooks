@@ -1,6 +1,7 @@
 class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :update, :edit, :destroy]
-
+  http_basic_authenticate_with :name => ENV['KEY1'], :password => ENV['KEY2'], except: [:new, :create, :show]
+  
   def index
     @statuses = Status.all
   end

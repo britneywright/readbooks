@@ -8,12 +8,6 @@ class Copy < ActiveRecord::Base
 
   after_save :update_copy
 
-  def update_copy
-    if availability == nil
-      update_attributes!(availability: true)
-    end      
-  end
-
   def copy_availability
     "#{copy_number}: #{availability}"
   end

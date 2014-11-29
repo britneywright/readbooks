@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  http_basic_authenticate_with :name => ENV['KEY1'], :password => ENV['KEY2'], except: [:index, :show]
 
   def index
     @books = Book.all

@@ -1,5 +1,6 @@
 class CopiesController < ApplicationController
   before_action :set_copy, only: [:show, :edit, :update, :destroy]
+  http_basic_authenticate_with :name => ENV['KEY1'], :password => ENV['KEY2']
 
   def index
     @copies = Copy.all
