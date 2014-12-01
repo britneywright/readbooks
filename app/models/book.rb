@@ -6,13 +6,20 @@ class Book < ActiveRecord::Base
 
   validates :link, format: {with: /\A(http:\/\/)|\A(https:\/\/)/, message: "must be a valid url"}, unless: "link.nil?"
 
-  has_attached_file :cover_image
+  has_attached_file :cover_image,
+                    :storage => :s3,
+                    :s3_credentials => Proc.new{|a| a.instance.s3_credentials}
+
   validates_attachment_content_type :cover_image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   after_create :add_copies
 
   def available
     self.copies.where(availability: true).count > 0
+  end
+
+  def s3_credentials
+    {:bucket => ENV['bucket'], :access_key_id => ENV['access_key_id'], :secret_access_key => ENV['secret_access_key']}
   end
 
   private
