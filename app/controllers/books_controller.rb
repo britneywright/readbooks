@@ -45,7 +45,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @food.destroy
+    @book.destroy
     respond_to do |format|
       format.html { redirect_to books_url, notice: "Book was deleted successfully."}
       format.json { head :no_content }
@@ -59,7 +59,7 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :author, :link, :description, :year, :cover_image)
+    params.require(:book).permit(:title, :author, :link, :description, :year, :cover_image, :initial_copies)
   end
 
 end

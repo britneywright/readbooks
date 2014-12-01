@@ -23,6 +23,10 @@
    <%= f.label :cover_image %>
    <%= f.file_field :cover_image %>
   </div>  
+  <div class="field">
+   <%= f.label "Number of copies" %>
+   <%= f.number_field :initial_copies %>
+  </div>    
   <div class="actions">
     <%= f.submit %>
   </div>    
