@@ -1,5 +1,4 @@
 <h2>Copies</h2>
 <% @copies.each do |copy| %>
-  <li><%= copy.book.title %>: Copy #<%= copy.copy_number %></li>
-  <li><%= copy.availability? ? "Available" : "Not Available" %></li>
+  <li><%= copy.book.title %>: Copy #<%= copy.copy_number %> - <%= copy.availability? ? "Available" : "Not Available" %></li>
 <% end %> 
