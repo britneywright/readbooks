@@ -7,6 +7,9 @@ gem 'rails', '4.1.6'
 gem 'pg'
 
 gem "paperclip", "~> 4.2"
+
+gem 'ckeditor'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
