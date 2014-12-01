@@ -1,10 +1,13 @@
-<h2>Books</h2>
 <ul class="bookList">
   <% @books.each do |book| %>
   <li class="singleBook">
     <%= image_tag book.cover_image.url, class: "bookImage" %>
     <h3><%= link_to book.title, book %></h3>
-<p><%= book.available ? "Available" : "Not available at this time" %><p>
+<% if book.available %>
+  <small class="available">Available</small>
+  <% else %> 
+  <small class="unavailable">Not available at this time</small>
+  <% end %>
   </li>
   <% end %>
  </ul>

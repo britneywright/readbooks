@@ -8,5 +8,8 @@ Rails.application.routes.draw do
 
   resources :copies, only: [:index, :edit, :update, :destroy, :show]
   resources :statuses, path: 'reservations', only: [:index, :edit, :update, :destroy, :show]
-  root 'books#index'
+  
+  root 'static_pages#index'
+
+  get 'about', to: 'static_pages#about'
 end

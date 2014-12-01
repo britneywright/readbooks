@@ -1,0 +1,42 @@
+/*** Mixins ***/
+
+$body: 14px;
+$mainText: 'Merriweather', serif;
+$headingText: 'Open Sans Condensed', sans-serif;
+* {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0 30px;
+  font-family: $mainText;
+  font-size: $body;
+background-color: #ffffff;
+background-image: image-url("white-sand.png");
+line-height: 2;
+display: flex;
+flex-direction: column;
+color: #130f30;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: ($body/2);
+  font-family: $headingText;
+  letter-spacing: 1px;
+}
+
+p {
+  margin-bottom: 10px;
+  line-height: 2;
+}
+
+a {
+  color: #663399;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #9A7197;
+}

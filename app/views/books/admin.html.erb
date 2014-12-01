@@ -11,13 +11,13 @@
 <div class="bookInfo">
   <% if @book.cover_image? %>
     <div class="bookCover">
-      <%= image_tag @book.cover_image.url %>
+      <%= image_tag @book.cover_image.url, class: "bookImage" %>
     </div>
   <% end %>
 
   <div class="bookDetails">
     <% if @book.description? %>
-      <p><%= simple_format(@book.description) %></p>
+      <%= simple_format(@book.description) %>
     <% end %>  
     <% if @book.link? %>
       <%= link_to "More info", @book.link %>
