@@ -4,13 +4,21 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 
+# Use pg for databases
 gem 'pg'
 
+# Use paperclip for uploading files
 gem "paperclip", "~> 4.2"
 
+# Use ckeditor for rich text editing
 gem 'ckeditor'
 
+# Use aws for hosting uploaded files
 gem 'aws-sdk'
+
+# Use postmark for transaction emails
+gem 'postmark-rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
