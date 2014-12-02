@@ -1,4 +1,5 @@
 class Book < ActiveRecord::Base
+  attr_accessor :initial_copies
   has_many :copies, :inverse_of => :book, dependent: :destroy
   has_many :statuses, :inverse_of => :book
   validates :title, :year, :author, presence: true
@@ -13,7 +14,7 @@ class Book < ActiveRecord::Base
 
   validates_attachment_content_type :cover_image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  after_create :add_copies
+  before_create :add_copies
 
   def available
     self.copies.where(availability: true).count > 0
@@ -26,8 +27,9 @@ class Book < ActiveRecord::Base
   private
 
   def add_copies
-    a = 0
-    (self.initial_copies.to_i).times { self.copies.create(book_id: self.id, copy_number: a += 1) }
+    initial_copies.to_i.times {|i|
+     copies.build(copy_number: i.next)
+   }
   end
 
 end
