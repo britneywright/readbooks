@@ -1,9 +1,7 @@
-
-<%= render 'availability' %>
-
 <div class="bookInfo">
+  <div class="bookCover">
+  <%= render 'availability' %>
   <% if @book.cover_image? %>
-    <div class="bookCover">
       <%= image_tag @book.cover_image.url, class: "bookImage" %>
     </div>
   <% end %>

@@ -19,6 +19,8 @@ nav {
 /*** Main ***/
 #main {
   flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 /*** Footer ***/
@@ -34,7 +36,6 @@ footer {
 /*** Book ***/
 .bookInfo {
   display: flex;
-  justify-content: flex-start;
   align-items: flex-start;
 }
 
