@@ -24,7 +24,7 @@ class StatusesController < ApplicationController
       if @status.save
         ReservationMailer.confirmation_email(@status).deliver
         ReservationMailer.request_email(@status).deliver
-        format.html { redirect_to books_path, notice: "Reservation was received." }
+        format.html { redirect_to @status.book, notice: "Reservation submitted successfully." }
       else
         format.html { render :new }
       end
