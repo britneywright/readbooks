@@ -8,7 +8,8 @@ class Book < ActiveRecord::Base
 
   has_attached_file :cover_image,
                     :storage => :s3,
-                    :s3_credentials => Proc.new{|a| a.instance.s3_credentials}
+                    :s3_credentials => Proc.new{|a| a.instance.s3_credentials},
+                    :url => ":s3_domain_url"
 
   validates_attachment_content_type :cover_image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
