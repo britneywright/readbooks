@@ -34,9 +34,49 @@ module RequestHelper
 
   def reservation_page
     expect(page).to have_text("New Reservation")
-    expect(page).to have_text("Borrower name")
-    expect(page).to have_text("Borrower email")
-    expect(page).to have_text("Borrower phone")
     expect(page).to have_button("Reserve Book")
   end
+
+  def reserve_book
+    fill_in "Borrower name", :with => "Sarah"
+    fill_in "Borrower email", :with => "sarah@example.com"
+    fill_in "Borrower phone", :with => "1234567899"
+    click_button("Reserve Book")
+  end
+
+  def confirmed_reservation
+    expect(page).to have_text("Reservation submitted successfully.")
+  end
+
+  def view_reservation_request
+    page.driver.browser.authorize ENV['KEY1'], ENV['KEY2']
+    visit statuses_path
+  end
+
+  def assign_copy
+    click_link("The Little Book of Talent", match: :first)
+    click_link("Edit", match: :first)
+    select("1: true", :from => "Copy")
+    fill_in "Checked out", :with => Date.today
+    click_button("Update Status") 
+  end
+
+  def checked_out
+    visit root_path
+    click_link("The Little Book of Talent")
+    expect(page).to have_text("Sorry, this book is not available right now.")
+  end
+
+  def check_in
+    page.driver.browser.authorize ENV['KEY1'], ENV['KEY2']
+    visit statuses_path
+    click_link("The Little Book of Talent", match: :first)
+    click_link("Edit", match: :first)
+    fill_in "Checked in", :with => Date.tomorrow
+    click_button("Update Status")         
+    visit root_path
+    click_link("The Little Book of Talent")
+    expect(page).to have_text("Reserve this book")
+  end
+
 end
