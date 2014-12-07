@@ -13,12 +13,12 @@ class StatusesController < ApplicationController
   end
 
   def new
-    @book = Book.find(params[:book_id])
+    @book = Book.find_by_slug(params[:book_id])
     @status = @book.statuses.new
   end
 
   def create
-    @book = Book.find(params[:book_id])
+    @book = Book.find_by_slug(params[:book_id])
     @status = @book.statuses.new(status_params)
     respond_to do |format|
       if @status.save
