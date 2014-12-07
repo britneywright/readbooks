@@ -15,18 +15,12 @@ feature "Borrow" do
     reservation_page
     reserve_book
     confirmed_reservation
-
-  # britney receives an email with the subject "Sarah wants to borrow The Little Book of Talent"
-  # the body includes sarah's personal info and the book info
-  # and a link to the status page
-  # britney interacts w/ sarah and gives her the book
-    
+    confirmation_email
+    # In Real Lfe: britney interacts w/ me and gives me the book
     view_reservation_request
     assign_copy
     checked_out
-
-  # sarah returns the book
-
+    # In Real Lfe: I return the book
     check_in
   end
 end

@@ -48,6 +48,12 @@ module RequestHelper
     expect(page).to have_text("Reservation submitted successfully.")
   end
 
+  def confirmation_email
+    expect(ActionMailer::Base.deliveries.last.subject).to eq("Rails Girls DC Library Request Received")
+    expect(ActionMailer::Base.deliveries.last.body.encoded).to include("The Little Book of Talent")
+    expect(ActionMailer::Base.deliveries.last.body.encoded).to have_link("login")
+  end
+
   def view_reservation_request
     page.driver.browser.authorize ENV['KEY1'], ENV['KEY2']
     visit statuses_path
