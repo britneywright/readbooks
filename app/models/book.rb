@@ -16,6 +16,16 @@ class Book < ActiveRecord::Base
 
   before_create :add_copies
 
+  before_save :set_slug
+
+  def set_slug
+    self.slug = title.parameterize unless title.blank?
+  end
+
+  def to_param
+    slug
+  end
+
   def available
     self.copies.where(availability: true).count > 0
   end
