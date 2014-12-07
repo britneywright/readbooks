@@ -6,7 +6,7 @@
   <body>
     <h1><%= @status.borrower_name %> would like to borrow a copy of <%= @status.book.title %></h1>
     <p>
-      Please login to view their contact information.<br>
+      Please <%= link_to "login", @status %> to view their contact information.<br>
     </p>
     <p>Have a great day!</p>
   </body>
