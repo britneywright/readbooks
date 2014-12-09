@@ -5,10 +5,11 @@ feature "Borrow" do
   include RequestHelper
 
   scenario "I'm coming to the Library to see books and borow one" do
-    books_are_added
+    title = "The Little Book of Talent"
+    create_books([title])
     go_to_website
-    list_of_books
-    go_to("The Little Book of Talent")
+    i_see_the_book(title)
+    go_to(title)
     view_details
     books_are_available
     click_borrow_button

@@ -1,9 +1,5 @@
 module RequestHelper
-  def books_are_added
-    create_books("The Little Book of Talent")
-  end
-
-  def create_books(*titles)
+  def create_books(titles)
     titles.each { |title| FactoryGirl.create(:book, title: title)}
   end
 
@@ -11,8 +7,8 @@ module RequestHelper
     visit root_path
   end
 
-  def list_of_books
-    expect(page).to have_text("The Little Book of Talent")
+  def i_see_the_book(title)
+    expect(page).to have_text(title)
   end
 
   def go_to(title)
